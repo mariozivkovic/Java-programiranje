@@ -1,5 +1,5 @@
 drop database if exists muzej;
-create database muzej;
+create database muzej default charset utf8;
 use muzej;
 
 create table kustos(
@@ -23,8 +23,8 @@ create table djelo(
     sifra int not null primary key auto_increment,
     naziv varchar(50) not null,
     umjetnik varchar(50) not null,
-    maksimalnodjela int not null,
-    izlozba int not null
+    maksimalnodjela int not null
+    
 );
 
 create table sponzor(
@@ -34,68 +34,51 @@ create table sponzor(
     oib char(11)
 );
 
+create table djelo_izlozba(
+    djelo int not null,
+    izlozba int not null 
+);
+
 alter table izlozba add foreign key (kustos) references kustos(sifra);
 alter table izlozba add foreign key (sponzor) references sponzor(sifra);
-alter table djelo add foreign key (izlozba) references izlozba(sifra);
+alter table djelo_izlozba add foreign key (djelo) references djelo(sifra);
+alter table djelo_izlozba add foreign key (izlozba) references izlozba(sifra);
 
-# 1
-insert into kustos(sifra,ime,prezime,oib,email)
-values(null,'Pero','Peric',null,'pero.peric@gmail.com');
 
-# 2
 
-insert into kustos (sifra,ime,prezime,oib,email)
-values(null,'Marko','Maric',null,'marko.maric@gmail.com');
+insert into kustos (ime,prezime,oib,email)
+values ('Pero','Perić',51282257865,'pperic@gmail.com'), # 1
+('Vlado','Vladić',31717779978,'vvladic@gmail.com'), # 2
+('Marko','Marić',92107302559,'mmaric@gmail.com'); # 3
 
-# 3
 
-insert into kustos (sifra,ime,prezime,oib,email)
-values(null,'Vlado','Vladic',null,'vlado.vladic@gmail.com');
+insert into sponzor (ime)
+values ('INA'), # 1
+('HEP'), # 2
+('Generali'); # 3
 
-# 1
 
-insert into sponzor (sifra,ime,brojugovora,oib)
-values(null,'Ina',null,null);
 
-# 2
+insert into izlozba (naziv,datumpocetka,datumzavrsetka,kustos,sponzor)
+values ('Proljeće','2022-5-25 10:00:00','2022-5-28 12:00:00',1,1), # 1
+      ('Ljeto','2022-07-20 10:00:00','2022-07-23 12:00:00',2,2), # 2
+      ('Jesen','2022-10-5 10:00:00','2022-10-8 12:00:00',3,3); # 3
+     
 
-insert into sponzor (sifra,ime,brojugovora,oib)
-values(null,'HEP','22\18',null);
+insert into djelo (naziv,umjetnik,maksimalnodjela)
+values ('Cvijeće u cvatu','Drago Dragić',5), # 1
+		('Valovi mora','Ante Antić',5), # 2
+		('Opadanje lišća','Maja Majić',5); # 3
+	
 
-# 3
 
-insert into sponzor (sifra,ime,brojugovora,oib)
-values(null,'Generali',null,'40145900839');
+insert into djelo_izlozba (djelo,izlozba)
+values(1,1),(2,2),(2,3);
 
-# 1
 
-insert into izlozba (sifra,naziv,datumpocetka,datumzavrsetka,kustos,sponzor)
-values(null,'Izabrana djela','2022-11-23',null,1,1);
 
-# 2
 
-insert into izlozba (sifra,naziv,datumpocetka,kustos,sponzor)
-values(null,'Portreti','2022-11-27',2,2);
 
-# 3
-
-insert into izlozba (sifra,naziv,kustos,sponzor)
-values(null,'Priroda u boji',3,3);
-
-# 1
-
-insert into djelo (sifra,naziv,umjetnik,maksimalnodjela,izlozba)
-values(null,'Mona Lisa','Leonardo da Vinci',20,1);
-
-# 2
-
-insert into djelo (sifra,naziv,umjetnik,izlozba,maksimalnodjela)
-values(null,'The Starry Night','Vincent Van Gogh',2,15);
-
-# 3
-
-insert into djelo (sifra,naziv,umjetnik,izlozba,maksimalnodjela)
-values(null,'The Scream','Edvard Munch',3,10);
 
 
 
