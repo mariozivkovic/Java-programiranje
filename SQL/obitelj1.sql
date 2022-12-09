@@ -4,9 +4,9 @@ use obitelj1;
 
 create table decko(
     sifra int not null primary key auto_increment,
-    indiferentno boolean,
+    indiferentno boolean not null,
     vesta varchar(31)not null,
-    asocijalno boolean   
+    asocijalno boolean not null  
      
 );
 
@@ -87,10 +87,10 @@ alter table prijatelj add foreign key (svekar) references svekar(sifra);
 
 
 
-insert into decko(vesta,asocijalno)
-values ('Bershka',null),
-		('New Yorker',null),
-		('Pull and Bear',null);
+insert into decko(vesta,asocijalno, indiferentno)
+values ('Bershka',true,false),
+		('New Yorker',true,false),
+		('Pull and Bear',true, false);
 	
 
 
@@ -136,10 +136,8 @@ insert into prijatelj (treciputa)
 		   ('2022-12-03 11:00:00');
 
 
-
 update prijatelj set treciputa='2020-04-30';
 
-select*from brat;
 
 delete from brat where ogrlica<>14;
 
@@ -148,12 +146,20 @@ from cura a
 left join cura b on a.sifra=b.suknja 
 where b.drugiputa is null;
 
-select f.novcica,a.neprijatelj, b.haljina 
+select f.novcica,a.neprijatelj, b.haljina,c.drugiputa  
 from brat a
 inner join neprijatelj b on b.sifra=a.neprijatelj 
 inner join cura c on c.sifra=b.cura 
 inner join decko d on d.sifra=c.decko 
-inner join decko_zarucnica e on d.sifra=e.zarucnica  
-inner join zarucnica f on f.sifra=e.decko  
-where d.vesta like '%ba' and c.drugiputa is not null
+inner join decko_zarucnica e on d.sifra=e.decko  
+inner join zarucnica f on f.sifra=e.zarucnica  
+where d.vesta like '%a%' and c.drugiputa
 order by 3 desc;
+
+select a.vesta, a.asocijalno
+from decko a
+left join decko_zarucnica b  on a.sifra=b.decko  
+where b.decko;
+
+
+
