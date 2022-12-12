@@ -4,49 +4,49 @@ use otpremnastanica;
 
 create table zaposlenik(
     sifra int not null primary key auto_increment,
-    ime varchar(59),
-    prezime varchar(50),
+    ime varchar(59)not null,
+    prezime varchar(50)not null,
     oib char(11),
-    email varchar(50),
-    radnomjesto varchar(50)
+    email varchar(50)not null,
+    radnomjesto varchar(50) not null
 
 );
 
 create table odrzavanje(
     sifra int not null primary key auto_increment,
     datum datetime,
-    zaposlenik int
+    zaposlenik int not null 
 );
 
 create table posao(
 sifra int not null primary key auto_increment,
-naziv varchar(100)
+naziv varchar(100) not null
 );
 
 create table naftno_polje(
     sifra int not null primary key auto_increment,
-    naziv varchar(50)
+    naziv varchar(50) not null
     
 );
 
 
 create table busotina(
     sifra int not null primary key auto_increment,
-    naziv varchar(20),
-    aktivna boolean,
-    naftno_polje int  
+    naziv varchar(20) not null,
+    aktivna boolean not null,
+    naftno_polje int  not null
 );
 
 
 create table odrzavanje_posao_busotina(
     sifra int not null primary key auto_increment,
-    odrzavanje int,
-    posao int,
-    busotina int,
+    odrzavanje int not null,
+    posao int not null,
+    busotina int not null,
     napomena varchar(100),
-    tlak_tubinga decimal(18,2),
-    tlak_casinga decimal(18,2),
-    tlak_naftovoda decimal(18,2)
+    tlak_tubinga decimal(18,2) not null,
+    tlak_casinga decimal(18,2) not null,
+    tlak_naftovoda decimal(18,2) not null
 );
 
 alter table odrzavanje add foreign key (zaposlenik) references zaposlenik(sifra);
@@ -132,35 +132,6 @@ values (1,1,1,10.5,39.1,9.5,'Bušotina radi dobro'),                            
 		(3,3,5,12.5,7.1,9.5,'Bušotina radi dobro'),                                                                # 7
 		(3,3,6,10.5,3.5,9.2,'Bušotina radi dobro'),                                                                # 8
 		(4,8,1,10.3,39.2,9.5,'Bušotina radi dobro,kracer išao dobro'),                                             # 9
-		(4,9,11,8.5,38.9,7.5,'Bušotina radi dobro, kracer išao dobro'),                                            # 10
-		(5,4,1,10.5,39.1,9.5,'Bušotina radi dobro, povučena kugla 3" na Č-La-3'),                                  # 11
-		(5,4,2,10.5,39.5,9.4,'Bušotina radi dobro, povučena kugla 3" na Č-La-3'),                                  # 12
-		(5,4,3,10.5,1.1,9.5,'Bušotina radi dobro, povučena kugla 3" na Č-La-3'),                                   # 13
-		(5,4,4,11.5,39.8,10.5,'Bušotina radi dobro, povučena kugla 3" na Č-La-3'),                                 # 14
-		(5,5,7,10.5,10.1,9.5,'Bušotina radi dobro,povučena kugla na Č-Cr-2 te aktivirana na bušotinu'),            # 15
-		(5,5,8,10.5,1.5,9.5,'Bušotina radi dobro,povučena kugla na Č-Cr-2 te aktivirana na bušotinu'),             # 16
-		(5,5,9,9.5,9.1,8.9,'Bušotina radi dobro,povučena kugla na Č-Cr-2 te aktivirana na bušotinu'),              # 17
-		(5,5,10,10.5,7.1,9.5,'Bušotina radi dobro,povučena kugla na Č-Cr-2 te aktivirana na bušotinu'),            # 18
-		(6,8,1,14.5,39.1,9.5,'Bušotina radi dobro,kracer išao dobro'),                                             # 19
-		(6,9,11,7.5,40.1,9.1,'Bušotina radi dobro,kracer išao dobro'),                                             # 20
-		(7,6,null,null,null,null,'Polja rade dobro'),                                                              # 21                                                                
-        (8,8,1,13.5,38.1,9.2,'Bušotina radi dobro, kracer išao dobro'),                                            # 22
-		(8,9,11,7.5,37.1,7.1,'Bušotina radi dobro, kracer išao dobro'),                                            # 23
-		(9,7,5,11.5,7.1,9.3,'Bušotina radi dobro, povučena kugla 3" na Č-La-2'),                                   # 24
-		(9,7,6,10.5,3.5,9.6,'Bušotina radi dobro, povučena kugla 3" na Č-La-2'),                                   # 25
-		(10,8,1,12.5,37.1,9.8,'Bušotina radi dobro, kracer išao dobro'),                                           # 26
-		(10,9,11,7.5,39.1,7.4,'Bušotina radi dobro, kracer išao dobro'),                                           # 27
-		(11,6,null,null,null,null,'Polja rade dobro'),                                                             # 28
-		(12,8,1,15.5,41.1,10.5,'Bušotina radi dobro, kracer išao dobro'),                                          # 29
-		(12,9,11,12.5,7.1,9.9,'Bušotina radi dobro, kracer išao dobro'),                                           # 30
-		(13,6,null,null,null,null,'Polja rade dobro'),                                                             # 31
-		(14,8,1,13.5,39.1,9.7,'Bušotina radi dobro, kracer išao dobro'),                                           # 32
-		(14,9,11,7.5,43.1,7.1,'Bušotina radi dobro, kracer išao dobro'),                                           # 33
-		(15,1,1,16.5,39.1,11.5,'Bušotina radi dobro'),                                                             # 34
-		(15,2,2,10.5,38.1,10.1,'Bušotina radi dobro'),                                                             # 35
-		(15,2,3,9.5,1.5,9.1,'Bušotina radi dobro'),                                                                # 36
-		(15,2,4,12.5,40.1,11.5,'Bušotina radi dobro'),                                                             # 37
-		(16,8,1,13.5,37.1,10.5,'Bušotina radi dobro, kracer išao dobro'),                                          # 38
-		(16,9,11,7.5,41.1,7.3,'Bušotina radi dobro, kracer išao dobro');                                           # 39
-        
+		(4,9,11,8.5,38.9,7.5,'Bušotina radi dobro, kracer išao dobro');                                            # 10
+	
         
