@@ -60,5 +60,5 @@ values (1,1,1), # 1
 
 update posjeta set vrijeme= '2022-11-21 10:00:00' where sifra=1;
 update posjeta set vrijeme= '2022-11-22 08:00:00' where sifra=2;
-update posjeta set vrijeme= '2022-11-23 16:00:00' where sifra=3;
+update posjeta set vrijeme= '2022-11-23 16:00:00' where sifra=3;          
 
