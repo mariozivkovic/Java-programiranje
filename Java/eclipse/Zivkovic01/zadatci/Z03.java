@@ -1,5 +1,7 @@
 package zadatci;
 
+import javax.swing.JOptionPane;
+
 public class Z03 {
 	
 	// Za unesena dva cijela broja
