@@ -7,11 +7,15 @@ public class Z03 {
 	
 	public static void main(String[] args) {
 		
-		int a= 8, b= 4;
+		int a = Integer.parseInt(JOptionPane.showInputDialog("Unesite broj 1"));
+		int b = Integer.parseInt(JOptionPane.showInputDialog("Unesite broj 2"));
 		
-		int c = a/b;
 		
-		System.out.println(c);
+		float rezultat = (float) a  /b;
+		
+		
+		System.out.println(rezultat);
+		
 		
 	}
 
