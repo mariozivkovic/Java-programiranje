@@ -1,5 +1,7 @@
 package zadatci;
 
+import javax.swing.JOptionPane;
+
 public class Z04 {
 	
 	// Za uneseni dvoznamenkasti broj
@@ -9,13 +11,15 @@ public class Z04 {
 	
 	public static void main(String[] args) {
 		
-		int i = 21%20;
 		
-		System.out.println(i);
+
+		int a = Integer.parseInt(JOptionPane.showInputDialog("Unesite broj 1"));
 		
-		int r  = 87%80;
+		int r = a % 10;
 		
 		System.out.println(r);
+		
+		
 	}
 
 }
