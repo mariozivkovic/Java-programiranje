@@ -83,6 +83,14 @@ public class TablicaMnozenja {
 				case 9:
 				    System.out.println(":  :  :  :  :  :   by " + ime);
 					break;
+					
+				case 10:
+					System.out.println(":  :  :  :  :  :  by " + ime);
+					break;
+					
+				case 11:
+					System.out.println(":  :  :  :  :  : by " + ime);
+					break;
 				}
 				
 				for (int k = 0; k < 31; k++) {
