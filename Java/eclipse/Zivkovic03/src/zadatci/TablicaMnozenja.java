@@ -8,13 +8,13 @@ public class TablicaMnozenja {
 
 		String ime = JOptionPane.showInputDialog("Unesite ime");
 		
-		for (int a = 0; a < 31; a++) {
+		for (int a = 0; a < 32; a++) {
 			System.out.print("-");
 		}
 		System.out.println();
 		System.out.println(": : :  TABLICA  MNOŽENJA  : : :");
 
-		for (int a = 0; a < 31; a++) {
+		for (int a = 0; a < 32; a++) {
 			System.out.print("-");
 		}
 		System.out.println();
@@ -22,7 +22,7 @@ public class TablicaMnozenja {
 		
 	
 		System.out.println();
-		for (int a = 0; a < 31; a++) {
+		for (int a = 0; a < 32; a++) {
 			System.out.print("-");
 		}
 		System.out.println();
