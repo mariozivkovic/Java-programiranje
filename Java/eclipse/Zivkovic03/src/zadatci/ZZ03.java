@@ -11,20 +11,23 @@ public class ZZ03 {
 
 		int prviBroj = Integer.parseInt(JOptionPane.showInputDialog("Unesi prvi broj"));
 		int drugiBroj = Integer.parseInt(JOptionPane.showInputDialog("Unesi drugi broj"));
-
-		int max = prviBroj > drugiBroj ? prviBroj : drugiBroj;
-		int min = prviBroj < drugiBroj ? prviBroj : drugiBroj;
+		
+		int min = prviBroj<drugiBroj ? prviBroj : drugiBroj;
+		int max = prviBroj>drugiBroj ? prviBroj : drugiBroj;
+		
+		boolean prim;
 
 		for (int i = min; i < max; i++) {
-			int broj = 0;
+			prim = true;
 			for (int a = 2; a < i; a++) {
 				if (i % a == 0) {
-					broj++;
+					prim = false;
+					break;
 
 				}
 
 			}
-			if (broj == 0) {
+			if (prim) {
 				System.out.println(i);
 			}
 
