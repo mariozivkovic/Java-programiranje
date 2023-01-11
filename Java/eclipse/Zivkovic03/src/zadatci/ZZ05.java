@@ -9,65 +9,72 @@ public class ZZ05 {
 	public static void main(String[] args) {
 		
 		int brojRedova = Integer.parseInt(
-
-				JOptionPane.showInputDialog("Unesi broj redova")
-
-		);
-
+				
+				JOptionPane.showInputDialog("Unesite broj redova")
+				
+				);
+		
 		int brojStupaca = Integer.parseInt(
-
-				JOptionPane.showInputDialog("Unesi broj stupaca")
-
-		);
+				
+				JOptionPane.showInputDialog("Unesite broj stupaca")
+				
+				);
 
 		int matrica[][] = new int[brojRedova][brojStupaca];
 
-		int brojac =1;
 		int maxRedova = brojRedova - 1;
-		int maxStupaca = brojStupaca - 1;
 		int minRedova = 0;
+		int maxStupaca = brojStupaca - 1;
 		int minStupaca = 0;
+		int brojac = 1;
 
 		for (; brojac <= brojRedova * brojStupaca;) {
-			for (int i = maxStupaca; i >= minStupaca; i--) {
-				if (brojac > brojRedova * brojStupaca) {
-					break;
-				} else {
-					matrica[maxRedova][i] = brojac++;
-				}
+
+			for (int j = maxStupaca; j >= minStupaca; j--) {
+				matrica[maxRedova][j] = brojac++;
 			}
+
+			if (brojac > brojRedova * brojStupaca) {
+				break;
+			}
+
 			maxRedova--;
 
-			for (int i = maxRedova; i >= minRedova; i--) {
-				if (brojac > brojRedova * brojStupaca) {
-					break;
-				} else {
-					matrica[i][minStupaca] = brojac++;
-				}
+			for (int j = maxRedova; j >= minRedova; j--) {
+				matrica[j][minStupaca] = brojac++;
+
 			}
+			if (brojac > brojRedova * brojStupaca) {
+				break;
+
+			}
+
 			minStupaca++;
 
-			for (int i = minStupaca; i <= maxStupaca; i++) {
-				if (brojac > brojRedova * brojStupaca) {
-					break;
-				} else {
-					matrica[minRedova][i] = brojac++;
-				}
+			for (int j = minStupaca; j <= maxStupaca; j++) {
+				matrica[minRedova][j] = brojac++;
+
 			}
+
+			if (brojac > brojRedova * brojStupaca) {
+				break;
+			}
+
 			minRedova++;
 
-			for (int i = minRedova; i <= maxRedova; i++) {
-				if (brojac > brojRedova * brojStupaca) {
-					break;
-				} else {
-					matrica[i][maxStupaca] = brojac++;
-				}
+			for (int j = minRedova; j <= maxRedova; j++) {
+				matrica[j][maxStupaca] = brojac++;
+
+			}
+			if (brojac > brojRedova * brojStupaca) {
+				break;
 			}
 			maxStupaca--;
 		}
+
 		for (int i = 0; i < brojRedova; i++) {
 			for (int j = 0; j < brojStupaca; j++) {
-				System.out.printf("%4d", matrica[i][j]);
+				System.out.printf("%4s", matrica[i][j]);
 			}
 			System.out.println();
 		}
