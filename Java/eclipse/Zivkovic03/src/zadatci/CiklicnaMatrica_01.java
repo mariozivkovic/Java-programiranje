@@ -4,8 +4,8 @@ import javax.swing.JOptionPane;
 
 public class CiklicnaMatrica_01 {
 
-	// Kreirati program koji ispisuje cikličnu matricu od gornjeg lijevog kuta pa
-	// nadalje
+	// Kreirati program koji ispisuje cikličnu matricu od gornjeg lijevog kuta prema desno
+	
 
 	public static void main(String[] args) {
 
