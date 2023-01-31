@@ -1,53 +1,64 @@
 package otpremnastanica.model;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
 public class OdrzavanjePosaoBusotina extends Entitet {
 
-	private Odrzavanje odrzavanje;
-	private Posao posao;
-	private Busotina busotina;
+	private List<Odrzavanje> odrzavanja;;
+	private List<Posao> poslovi;
+	private List<Busotina> busotine;
 	private String napomena;
-	private double tlakTubinga;
-	private double tlakNaftovoda;
-	private double tlakCasinga;
+	private BigDecimal tlakTubinga;
+	private BigDecimal tlakNaftovoda;
+	private BigDecimal tlakCasinga;
 
 	public OdrzavanjePosaoBusotina() {
 		super();
+		odrzavanja = new ArrayList<>();
+		poslovi = new ArrayList<>();
+		busotine = new ArrayList<>();
 	}
+	
+	
 
-	public OdrzavanjePosaoBusotina(int sifra, Odrzavanje odrzavanje, Posao posao, Busotina busotina, String napomena,
-			double tlakTubinga, double tlakNaftovoda, double tlakCasinga) {
+	public OdrzavanjePosaoBusotina(int sifra, List<Odrzavanje> odrzavanja, List<Posao> poslovi, List<Busotina> busotine,
+			String napomena, BigDecimal tlakTubinga, BigDecimal tlakNaftovoda, BigDecimal tlakCasinga) {
 		super(sifra);
-		this.odrzavanje = odrzavanje;
-		this.posao = posao;
-		this.busotina = busotina;
+		this.odrzavanja = odrzavanja;
+		this.poslovi = poslovi;
+		this.busotine = busotine;
 		this.napomena = napomena;
 		this.tlakTubinga = tlakTubinga;
 		this.tlakNaftovoda = tlakNaftovoda;
 		this.tlakCasinga = tlakCasinga;
 	}
 
-	public Odrzavanje getOdrzavanje() {
-		return odrzavanje;
+
+
+	public List<Odrzavanje> getOdrzavanja() {
+		return odrzavanja;
 	}
 
-	public void setOdrzavanje(Odrzavanje odrzavanje) {
-		this.odrzavanje = odrzavanje;
+	public void setOdrzavanja(List<Odrzavanje> odrzavanja) {
+		this.odrzavanja = odrzavanja;
 	}
 
-	public Posao getPosao() {
-		return posao;
+	public List<Posao> getPoslovi() {
+		return poslovi;
 	}
 
-	public void setPosao(Posao posao) {
-		this.posao = posao;
+	public void setPoslovi(List<Posao> poslovi) {
+		this.poslovi = poslovi;
 	}
 
-	public Busotina getBusotina() {
-		return busotina;
+	public List<Busotina> getBusotine() {
+		return busotine;
 	}
 
-	public void setBusotina(Busotina busotina) {
-		this.busotina = busotina;
+	public void setBusotine(List<Busotina> busotine) {
+		this.busotine = busotine;
 	}
 
 	public String getNapomena() {
@@ -58,28 +69,35 @@ public class OdrzavanjePosaoBusotina extends Entitet {
 		this.napomena = napomena;
 	}
 
-	public double getTlakTubinga() {
+	public BigDecimal getTlakTubinga() {
 		return tlakTubinga;
 	}
 
-	public void setTlakTubinga(double tlakTubinga) {
+	public void setTlakTubinga(BigDecimal tlakTubinga) {
 		this.tlakTubinga = tlakTubinga;
 	}
 
-	public double getTlakNaftovoda() {
+	public BigDecimal getTlakNaftovoda() {
 		return tlakNaftovoda;
 	}
 
-	public void setTlakNaftovoda(double tlakNaftovoda) {
+	public void setTlakNaftovoda(BigDecimal tlakNaftovoda) {
 		this.tlakNaftovoda = tlakNaftovoda;
 	}
 
-	public double getTlakCasinga() {
+	public BigDecimal getTlakCasinga() {
 		return tlakCasinga;
 	}
 
-	public void setTlakCasinga(double tlakCasinga) {
+	public void setTlakCasinga(BigDecimal tlakCasinga) {
 		this.tlakCasinga = tlakCasinga;
 	}
+	
+	
+
+	
+	
+
+
 
 }

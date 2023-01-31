@@ -1,18 +1,34 @@
 package otpremnastanica.model;
 
-public class Busotina extends NaftnoPolje {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Busotina extends Entitet {
+	
+	private String naziv;
 	private boolean aktivna;
-	private NaftnoPolje naftnoPolje;
+	private List<NaftnoPolje> naftnaPolja;
 
 	public Busotina() {
 		super();
+		naftnaPolja = new ArrayList<>();
+	}
+	
+	public Busotina(int sifra, String naziv, boolean aktivna, List<NaftnoPolje> naftnaPolja) {
+		super(sifra);
+		this.naziv = naziv;
+		this.aktivna = aktivna;
+		this.naftnaPolja = naftnaPolja;
 	}
 
-	public Busotina(int sifra, String naziv, boolean aktivna, NaftnoPolje naftnoPolje) {
-		super(sifra, naziv);
-		this.aktivna = aktivna;
-		this.naftnoPolje = naftnoPolje;
+
+
+	public String getNaziv() {
+		return naziv;
+	}
+
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
 	}
 
 	public boolean isAktivna() {
@@ -23,12 +39,14 @@ public class Busotina extends NaftnoPolje {
 		this.aktivna = aktivna;
 	}
 
-	public NaftnoPolje getNaftnoPolje() {
-		return naftnoPolje;
+	public List<NaftnoPolje> getNaftnaPolja() {
+		return naftnaPolja;
 	}
 
-	public void setNaftnoPolje(NaftnoPolje naftnoPolje) {
-		this.naftnoPolje = naftnoPolje;
+	public void setNaftnaPolja(List<NaftnoPolje> naftnaPolja) {
+		this.naftnaPolja = naftnaPolja;
 	}
+	
 
+	
 }
