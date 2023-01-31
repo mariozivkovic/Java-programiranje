@@ -46,6 +46,11 @@ public class Busotina extends Entitet {
 	public void setNaftnaPolja(List<NaftnoPolje> naftnaPolja) {
 		this.naftnaPolja = naftnaPolja;
 	}
+	@Override
+	public String toString() {
+	
+		return naziv;
+	}
 	
 
 	
