@@ -32,7 +32,7 @@ public class Zivkovic01 {
      //   primjerSelect();
      long pocetak = System.currentTimeMillis();
      //   unesiSmjerBrze(10000);
-         
+         unesiOsobu(10000);
      long kraj = System.currentTimeMillis();
  
         System.out.println((kraj-pocetak)/(float)1000);
@@ -121,5 +121,31 @@ public class Zivkovic01 {
 
     }
 
+    private void unesiOsobu(int komada) {
+         
+        try {
+            st = conn.createStatement();
+            StringBuilder sb = new StringBuilder();
+            sb.append("insert into osoba(ime,prezime,email) values ");
+            for (int i = 0; i < komada; i++) {
+                sb.append("('");
+                sb.append(faker.name().firstName());
+                 sb.append("','");
+                sb.append(faker.name().lastName());
+                 sb.append("','");
+                sb.append(faker.internet().emailAddress());
+                sb.append("'),");
+            }
+           
+           sb.deleteCharAt(sb.length()-1);
+            
+            st.executeUpdate(sb.toString());
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    }
+
    
-}
+
