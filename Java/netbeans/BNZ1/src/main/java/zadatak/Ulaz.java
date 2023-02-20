@@ -30,8 +30,9 @@ public class Ulaz extends javax.swing.JFrame {
         lblImena = new javax.swing.JLabel();
         txtImena = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        btnZatvori = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txtIspis.setText("Ispis");
         txtIspis.addActionListener(new java.awt.event.ActionListener() {
@@ -42,6 +43,13 @@ public class Ulaz extends javax.swing.JFrame {
 
         jLabel1.setText("Unesite imena:");
 
+        btnZatvori.setText("Zatvori");
+        btnZatvori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZatvoriActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -49,16 +57,18 @@ public class Ulaz extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(txtIspis))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(lblImena, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtImena, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(txtIspis)
+                        .addGap(70, 70, 70)
+                        .addComponent(btnZatvori)))
                 .addContainerGap(63, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -70,9 +80,11 @@ public class Ulaz extends javax.swing.JFrame {
                 .addComponent(txtImena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(50, 50, 50)
                 .addComponent(lblImena, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(txtIspis)
-                .addGap(46, 46, 46))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIspis)
+                    .addComponent(btnZatvori))
+                .addGap(45, 45, 45))
         );
 
         pack();
@@ -82,9 +94,14 @@ public class Ulaz extends javax.swing.JFrame {
        lblImena.setText(txtImena.getText());
     }//GEN-LAST:event_txtIspisActionPerformed
 
+    private void btnZatvoriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZatvoriActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnZatvoriActionPerformed
+
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnZatvori;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblImena;
     private javax.swing.JTextField txtImena;
