@@ -18,7 +18,10 @@
     <property name="format_sql">true</property>
     <property name="hbm2ddl.auto">update</property>
     
-    <mapping class="zadatak.model.Osoba" />
+    <mapping class="zadatak.model.Smjer" />
+     <mapping class="zadatak.model.Polaznik" />
+      <mapping class="zadatak.model.Predavac" />
+       <mapping class="zadatak.model.Grupa" />
     
     
   </session-factory>

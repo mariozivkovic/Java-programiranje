@@ -1,81 +1,66 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package zadatak.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import java.math.BigDecimal;
-import java.util.Date;
 
-@Entity(name="osobe")
-public class Osoba {
-  @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer sifra;
-    @Column(
-            name = "imeosobe",
-            nullable = false, 
-            length = 50
-    )
-    private String ime;
-    private String prezime;
-    @Column(columnDefinition = "decimal(18,2)")
-    private BigDecimal primanja;
-    private Boolean aktivan;
-    @Column(columnDefinition = "datetime")
-    private Date datumRodenja;
+import jakarta.persistence.MappedSuperclass;
 
-    public Integer getSifra() {
-        return sifra;
-    }
 
-    public void setSifra(Integer sifra) {
-        this.sifra = sifra;
-    }
 
-    public String getIme() {
-        return ime;
-    }
 
-    public void setIme(String ime) {
-        this.ime = ime;
-    }
+@MappedSuperclass
+public abstract class Osoba extends Entitet {
 
-    public String getPrezime() {
-        return prezime;
-    }
+	private String ime;
+	private String prezime;
+	private String oib;
+	private String email;
 
-    public void setPrezime(String prezime) {
-        this.prezime = prezime;
-    }
+	public Osoba() {
+		super();
+	}
 
-    public BigDecimal getPrimanja() {
-        return primanja;
-    }
+	public Osoba(int sifra, String ime, String prezime, String oib, String email) {
+		super(sifra);
+		this.ime = ime;
+		this.prezime = prezime;
+		this.oib = oib;
+		this.email = email;
+	}
 
-    public void setPrimanja(BigDecimal primanja) {
-        this.primanja = primanja;
-    }
+	public String getIme() {
+		return ime;
+	}
 
-    public Boolean getAktivan() {
-        return aktivan;
-    }
+	public void setIme(String ime) {
+		this.ime = ime;
+	}
 
-    public void setAktivan(Boolean aktivan) {
-        this.aktivan = aktivan;
-    }
+	public String getPrezime() {
+		return prezime;
+	}
 
-    public Date getDatumRodenja() {
-        return datumRodenja;
-    }
+	public void setPrezime(String prezime) {
+		this.prezime = prezime;
+	}
 
-    public void setDatumRodenja(Date datumRodenja) {
-        this.datumRodenja = datumRodenja;
-    }
-    
+	public String getOib() {
+		return oib;
+	}
+
+	public void setOib(String oib) {
+		this.oib = oib;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Override
+	public String toString() {
+		return ime + " " + prezime;
+	}
+
 }
