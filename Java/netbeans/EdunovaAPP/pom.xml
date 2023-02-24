@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
-        <exec.mainClass>zadatak.Start</exec.mainClass>
+        <exec.mainClass>edunova.Start</exec.mainClass>
     </properties>
     
     <dependencies>
@@ -24,27 +24,32 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>6.1.7.Final</version>
-        </dependency>
+         </dependency>
          
          
-        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
-        <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
-        </dependency>
-
+         <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+            <dependency>
+                <groupId>com.github.javafaker</groupId>
+                <artifactId>javafaker</artifactId>
+                <version>1.0.2</version>
+            </dependency>
+            
+            
+             <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.14.3</version>
         </dependency>
         
-         <dependency>
+        <!-- https://mvnrepository.com/artifact/us.codecraft/xsoup -->
+        <dependency>
             <groupId>us.codecraft</groupId>
             <artifactId>xsoup</artifactId>
             <version>0.3.2</version>
         </dependency>
+
+
     </dependencies>
     
 </project>

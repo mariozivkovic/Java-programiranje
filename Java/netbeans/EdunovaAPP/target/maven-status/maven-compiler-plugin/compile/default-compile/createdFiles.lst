@@ -1,0 +1,10 @@
+zadatak\model\Polaznik.class
+zadatak\model\Smjer.class
+zadatak\model\Entitet.class
+zadatak\util\HibernateUtil.class
+zadatak\Start.class
+zadatak\model\Grupa.class
+zadatak\model\Predavac.class
+zadatak\util\PocetniInsert.class
+zadatak\model\Osoba.class
+zadatak\util\Alati.class
