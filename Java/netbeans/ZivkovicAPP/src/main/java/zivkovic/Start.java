@@ -4,8 +4,10 @@
 
 package zivkovic;
 
-import zivkovic.util.HibernateUtil;
 import zivkovic.util.PocetniInsert;
+
+
+
 
 /**
  *
@@ -14,6 +16,7 @@ import zivkovic.util.PocetniInsert;
 public class Start {
 
     public static void main(String[] args) {
-        PocetniInsert.izvedi();
+        
+        new PocetniInsert();
     }
 }
