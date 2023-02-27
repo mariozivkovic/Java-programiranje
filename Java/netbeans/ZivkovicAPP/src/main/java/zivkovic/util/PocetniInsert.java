@@ -35,17 +35,20 @@ public class PocetniInsert {
     private static final int BROJ_POSLOVA =30000;
     private static final int BROJ_NAFTNIH_POLJA = 10;
     private static final int BROJ_BUSOTINA =300;
-    private static final int BROJ_ODRZAVANJA =30000;
-    private static final int BROJ_POSLOVA_BUSOTINA =31000;
+    private static final int BROJ_POSLOVA_BUSOTINA =32000;
+    private static final int BROJ_ODRZAVANJA =32000;
+    
     
     private Faker faker;
     private List<Zaposlenik> zaposlenici;
     private List<Posao> poslovi;
     private List<NaftnoPolje> naftnaPolja;
     private List<Busotina> busotine;
-    private List<Odrzavanje> odrzavanja;
     private List<PosaoBusotina> posloviBusotine;
+    private List<Odrzavanje> odrzavanja;
+    
     private Session session;
+    
     public PocetniInsert() {
         
         faker = new Faker();
@@ -53,8 +56,9 @@ public class PocetniInsert {
         poslovi = new ArrayList<>();
         naftnaPolja = new ArrayList<>();
         busotine = new ArrayList<>();
+        posloviBusotine  = new ArrayList<>();
         odrzavanja = new ArrayList<>();
-        posloviBusotine = new ArrayList<>();
+       
         session = HibernateUtil.getSession();
         session.beginTransaction();
         kreirajZaposlenike();
@@ -89,7 +93,7 @@ public class PocetniInsert {
         Posao p;
         for(int i=0;i<BROJ_POSLOVA;i++){
             p = new Posao();
-            p.setNaziv(faker.job().field());
+            p.setNaziv(faker.app().name());
             session.persist(p);
             poslovi.add(p);
         }
@@ -117,13 +121,29 @@ public class PocetniInsert {
             b.setAktivna(faker.bool().bool());
             np = new ArrayList<>();
             
-            for(int j=0;j<sb(1, 1);j++){
+            for(int j=0;j<sb(0, BROJ_NAFTNIH_POLJA);j++){
                 np.add(naftnaPolja.get(sb(0, BROJ_NAFTNIH_POLJA-1)));
             }
             
             b.setNaftnaPolja(np);
             session.persist(b);
         }
+    }
+    private void kreirajPosloviBusotine() {
+             
+             PosaoBusotina pb;
+             for(int i =0;i<BROJ_POSLOVA_BUSOTINA;i++){
+                 pb = new PosaoBusotina();
+                 pb.setPosao(poslovi.get(sb(0, BROJ_POSLOVA-1)));
+                 pb.setBusotina(busotine.get(sb(0, BROJ_BUSOTINA-1)));
+                 pb.setNapomena(faker.book().title());
+                 pb.setTlakTubinga(new BigDecimal(faker.number().randomDouble(2, 8, 15)));
+                 pb.setTlakNaftovoda(new BigDecimal(faker.number().randomDouble(2, 8, 15)));
+                 pb.setTlakCasinga(new BigDecimal(faker.number().randomDouble(2, 10, 50)));
+                 
+                 session.persist(pb);
+                 posloviBusotine.add(pb);
+             }
     }
         private void kreirajOdrzavanja() {
             
@@ -134,35 +154,22 @@ public class PocetniInsert {
                 o = new Odrzavanje();
                 o.setDatum(faker.date().birthday());
                 z = new ArrayList<>();
-                for(int j=0;j<sb(1, 2);j++){
+                for(int j=0;j<sb(0, BROJ_ZAPOSLENIKA);j++){
                     z.add(zaposlenici.get(sb(0, BROJ_ZAPOSLENIKA-1)));
                 }
                 o.setZaposlenici(z);
+                
                 pb = new ArrayList<>();
                 for(int a = 0;a<sb(10, 20);i++){
+                   
                     pb.add(posloviBusotine.get(sb(0, BROJ_POSLOVA_BUSOTINA-1)));
                 }
                 o.setPosloviBusotine(pb);
                 session.persist(o);
             }
-  
+            
     }
-         private void kreirajPosloviBusotine() {
-             
-             PosaoBusotina pb;
-             for(int i =0;i<BROJ_POSLOVA_BUSOTINA;i++){
-                 pb = new PosaoBusotina();
-                 pb.setPosao(poslovi.get(sb(0, BROJ_POSLOVA-1)));
-                 pb.setBusotina(busotine.get(sb(0, BROJ_BUSOTINA-1)));
-                 pb.setNapomena(faker.book().title());
-                 pb.setTlakTubinga(new BigDecimal(faker.number().randomDouble(1, 8, 15)));
-                 pb.setTlakNaftovoda(new BigDecimal(faker.number().randomDouble(1, 8, 15)));
-                 pb.setTlakCasinga(new BigDecimal(faker.number().randomDouble(1, 10, 50)));
-                 
-                 session.persist(pb);
-                 posloviBusotine.add(pb);
-             }
-    }
+         
     
     
     
@@ -170,7 +177,15 @@ public class PocetniInsert {
         return ThreadLocalRandom.current().nextInt(min, max + 1);
     }
 
-   
+// Exception in thread "main" java.lang.IndexOutOfBoundsException: Index 177 out of bounds for length 0
+//	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:100)
+//	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:106)
+//	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:302)
+//	at java.base/java.util.Objects.checkIndex(Objects.java:359)
+//	at java.base/java.util.ArrayList.get(ArrayList.java:427)
+//	at zivkovic.util.PocetniInsert.kreirajPosloviBusotine(PocetniInsert.java:138)
+//	at zivkovic.util.PocetniInsert.<init>(PocetniInsert.java:68)
+//	at zivkovic.Start.main(Start.java:20)
 
     
             

@@ -20,8 +20,9 @@
     <mapping class="zivkovic.model.Posao" />
     <mapping class="zivkovic.model.NaftnoPolje" />
     <mapping class="zivkovic.model.Busotina" />
+     <mapping class="zivkovic.model.PosaoBusotina" />
     <mapping class="zivkovic.model.Odrzavanje" />
-    <mapping class="zivkovic.model.PosaoBusotina" />
+   
   
     
   </session-factory>
