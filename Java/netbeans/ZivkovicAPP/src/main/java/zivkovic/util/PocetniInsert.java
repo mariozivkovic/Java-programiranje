@@ -32,11 +32,11 @@ public class PocetniInsert {
     
     
     private static final int BROJ_ZAPOSLENIKA =100;
-    private static final int BROJ_POSLOVA =30000;
+    private static final int BROJ_POSLOVA =5000;
     private static final int BROJ_NAFTNIH_POLJA = 10;
     private static final int BROJ_BUSOTINA =300;
-    private static final int BROJ_POSLOVA_BUSOTINA =32000;
-    private static final int BROJ_ODRZAVANJA =32000;
+    private static final int BROJ_POSLOVA_BUSOTINA =10000;
+    private static final int BROJ_ODRZAVANJA =16800;
     
     
     private Faker faker;
@@ -121,12 +121,13 @@ public class PocetniInsert {
             b.setAktivna(faker.bool().bool());
             np = new ArrayList<>();
             
-            for(int j=0;j<sb(0, BROJ_NAFTNIH_POLJA);j++){
+            for(int j=1;j<=1;j++){
                 np.add(naftnaPolja.get(sb(0, BROJ_NAFTNIH_POLJA-1)));
             }
             
             b.setNaftnaPolja(np);
             session.persist(b);
+            busotine.add(b);
         }
     }
     private void kreirajPosloviBusotine() {
@@ -154,7 +155,7 @@ public class PocetniInsert {
                 o = new Odrzavanje();
                 o.setDatum(faker.date().birthday());
                 z = new ArrayList<>();
-                for(int j=0;j<sb(0, BROJ_ZAPOSLENIKA);j++){
+                for(int j=1;j<=1;j++){
                     z.add(zaposlenici.get(sb(0, BROJ_ZAPOSLENIKA-1)));
                 }
                 o.setZaposlenici(z);
@@ -166,6 +167,7 @@ public class PocetniInsert {
                 }
                 o.setPosloviBusotine(pb);
                 session.persist(o);
+                
             }
             
     }
