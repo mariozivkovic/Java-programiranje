@@ -123,4 +123,3 @@ values (1,1,1,10.5,39.1,9.5,'Bušotina radi dobro'),                            
 		(4,8,1,10.3,39.2,9.5,'Bušotina radi dobro,kracer išao dobro'),                                             # 9
 		(4,9,11,8.5,38.9,7.5,'Bušotina radi dobro, kracer išao dobro');                                            # 10
 	
-        
